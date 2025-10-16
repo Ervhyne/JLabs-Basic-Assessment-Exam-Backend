@@ -12,5 +12,5 @@ export function login(req: Request, res: Response) {
   if (!user) return res.status(401).json({ message: 'Invalid credentials' })
 
   const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' })
-  return res.json({ token, user: { id: user.id, email: user.email, name: user.name } })
+  return res.json({ token, user: { id: user.id, email: user.email } })
 }
